@@ -7,7 +7,7 @@ import setting as stg
 dirname = os.getcwd()
 
 app = Flask(__name__, static_folder=stg.path_static )
-app.config["secret_key = "] = stg.secret_key 
+app.config["secret_key = "] = stg.secret_key  
 
 @app.route("/")
 def index():
