@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request,url_for, redirect
 import os
-import setting as stg
+import settings as stg
 import db_scripts as db
 
 
@@ -21,6 +21,12 @@ def post_category(category_name):
 
     if request.method == "GET":
         posts = db.getPostsByCategory(category_name)
+        
+
+    if request.method == "POST":
+        db.addPost(request.form["category_id"], request.form["post"])
+        posts = db.getPostsByCategory(category_name)
+        return redirect(f"/post/category/{category_name}")
 
     return render_template("post_category.html", category_name = category_name,
                            category_id = category_id,
@@ -36,6 +42,9 @@ def about():
     print(user)
     return render_template("about.html", user = user)
 
-
+@app.route("/post/delete/<post_id>/<category_name>")
+def deletePost(post_id, category_name):
+    db.deletePost(post_id)
+    return redirect(f"/post/category/{category_name}")
 
 app.run(debug = True)

@@ -1,0 +1,19 @@
+body{
+    background: white;
+    font-family: Arial, Arial, Helvetica, sans-serif;
+}
+
+.post-img{
+    float: left;
+    border: 5px double black;
+    margin-right: 10px;
+}
+
+.category-header{
+    font-size: 60px;
+    font-family: 'sans-serif';
+}
+
+.post-input{
+    font-size:x-large
+}
